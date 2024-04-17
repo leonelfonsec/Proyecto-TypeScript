@@ -10,8 +10,10 @@ export var ap = new Aprendiz("Juan Pablo", "Reyes Gomez", "avatar.png", 30, Nive
 console.log(ap.cursos);
 var aprendizTable = document.getElementById("aprendiz");
 var estadisticasTable = document.getElementById("estadisticas");
+var cursosTable = document.getElementById("cursos");
 mostrarDatosAprendiz(ap);
 mostrarEstadisticas(ap);
+mostrarCursosAprendiz(ap);
 function mostrarDatosAprendiz(aprendiz) {
     var tbodyAprendiz = document.createElement("tbody");
     tbodyAprendiz.innerHTML = "\n    <tr><td colspan=2></td><img src=\"./" + aprendiz.avatar + "\" height=\"100\"></tr>\n    <tr><td>Nombres:</td> <td>  " + aprendiz.nombres + "</td></>\n    <tr><td>Apellidos:</td><td>" + aprendiz.apellidos + "</td></>\n    <tr><td>Nivel educativo:</td><td>" + aprendiz.nivelEducativo + "</td></>\n    <tr><td>Edad:</td><td>" + aprendiz.edad + "</td></>\n    ";
@@ -22,4 +24,14 @@ function mostrarEstadisticas(aprendiz) {
     var trElement = document.createElement("tr");
     trElement.innerHTML = "<td><b>Cursos certifficados</b></td><td>" + numeroCertificados + "</td>";
     estadisticasTable.appendChild(trElement);
+}
+function mostrarCursosAprendiz(aprendiz) {
+    var cursosTbody = document.createElement("tbody");
+    for (var _i = 0, _a = aprendiz.cursos; _i < _a.length; _i++) {
+        var curso = _a[_i];
+        var trElement = document.createElement("tr");
+        trElement.innerHTML = "<td>" + curso.nombre + "</td>\n        <td>" + curso.horas + "</td>\n        <td>" + curso.calificacion + "</td>\n        <td>" + curso.certificado + "</td>\n        <td>" + curso.anio + "</td>\n        ";
+        cursosTbody.appendChild(trElement);
+    }
+    cursosTable.appendChild(cursosTbody);
 }
