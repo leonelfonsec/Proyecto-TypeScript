@@ -11,26 +11,35 @@ console.log(ap.cursos);
 var aprendizTable = document.getElementById("aprendiz");
 var estadisticasTable = document.getElementById("estadisticas");
 var cursosTable = document.getElementById("cursos");
+var btnFiltro = document.getElementById("boton-filtro");
+var textoBusqueda = document.getElementById("texto-busqueda");
+btnFiltro.onclick = function () {
+    var text = textoBusqueda.value;
+    text = (text == null) ? "" : text;
+    cursosTable.getElementsByTagName("tbody")[0].remove();
+    var cursosFiltrados = ap.cursos.filter(function (c) { return c.nombre.match(text); });
+    mostrarCursosAprendiz(cursosFiltrados);
+};
 mostrarDatosAprendiz(ap);
 mostrarEstadisticas(ap);
-mostrarCursosAprendiz(ap);
+mostrarCursosAprendiz(ap.cursos);
 function mostrarDatosAprendiz(aprendiz) {
     var tbodyAprendiz = document.createElement("tbody");
-    tbodyAprendiz.innerHTML = "\n    <tr><td colspan=2></td><img src=\"./" + aprendiz.avatar + "\" height=\"100\"></tr>\n    <tr><td>Nombres:</td> <td>  " + aprendiz.nombres + "</td></>\n    <tr><td>Apellidos:</td><td>" + aprendiz.apellidos + "</td></>\n    <tr><td>Nivel educativo:</td><td>" + aprendiz.nivelEducativo + "</td></>\n    <tr><td>Edad:</td><td>" + aprendiz.edad + "</td></>\n    ";
+    tbodyAprendiz.innerHTML = "\n    <tr><td colspan=2></td><img src=\"./".concat(aprendiz.avatar, "\" height=\"100\"></tr>\n    <tr><td>Nombres:</td> <td>  ").concat(aprendiz.nombres, "</td></>\n    <tr><td>Apellidos:</td><td>").concat(aprendiz.apellidos, "</td></>\n    <tr><td>Nivel educativo:</td><td>").concat(aprendiz.nivelEducativo, "</td></>\n    <tr><td>Edad:</td><td>").concat(aprendiz.edad, "</td></>\n    ");
     aprendizTable.appendChild(tbodyAprendiz);
 }
 function mostrarEstadisticas(aprendiz) {
     var numeroCertificados = aprendiz.darCursosCertificados();
     var trElement = document.createElement("tr");
-    trElement.innerHTML = "<td><b>Cursos certifficados</b></td><td>" + numeroCertificados + "</td>";
+    trElement.innerHTML = "<td><b>Cursos certifficados</b></td><td>".concat(numeroCertificados, "</td>");
     estadisticasTable.appendChild(trElement);
 }
-function mostrarCursosAprendiz(aprendiz) {
+function mostrarCursosAprendiz(cursos) {
     var cursosTbody = document.createElement("tbody");
-    for (var _i = 0, _a = aprendiz.cursos; _i < _a.length; _i++) {
-        var curso = _a[_i];
+    for (var _i = 0, cursos_1 = cursos; _i < cursos_1.length; _i++) {
+        var curso = cursos_1[_i];
         var trElement = document.createElement("tr");
-        trElement.innerHTML = "<td>" + curso.nombre + "</td>\n        <td>" + curso.horas + "</td>\n        <td>" + curso.calificacion + "</td>\n        <td>" + curso.certificado + "</td>\n        <td>" + curso.anio + "</td>\n        ";
+        trElement.innerHTML = "<td>".concat(curso.nombre, "</td>\n        <td>").concat(curso.horas, "</td>\n        <td>").concat(curso.calificacion, "</td>\n        <td>").concat(curso.certificado, "</td>\n        <td>").concat(curso.anio, "</td>\n        ");
         cursosTbody.appendChild(trElement);
     }
     cursosTable.appendChild(cursosTbody);

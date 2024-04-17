@@ -68,3 +68,17 @@ var fSumar = sumar;
 
 console.log(sumar(10,15));
 console.log(fSumar(20,25));
+
+##COMPILAR
+tsc -p .\tsconfig.json
+
+{
+    "compilerOptions": {
+        "target": "ES5",
+        "module": "ES6",
+        "outDir": "./scripts",
+        "rootDir": "./",
+        "strict": true,
+        "alwaysStrict": true
+    }
+}
