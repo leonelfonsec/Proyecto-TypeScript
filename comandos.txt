@@ -1,0 +1,70 @@
+tsc main.ts -outDir scripts && node .\scripts\main.js
+
+//EJEMPLO 1 - COMPILACION DE PROYECTOS Y TIPOS BASICOS DE DATOS STRING
+
+console.log("Hola Mundo!");
+
+let miTexto: string="Hola mundo de nuevo";
+console.log(miTexto);
+
+let tagUno: string = "<div class=\"ejemplo\">";
+let tagDos: string = "<div class='ejemplo'>";
+
+console.log(tagUno);
+console.log(tagDos);
+
+console.log("Esta es una linea\nEsta es otra linea");
+console.log(`Esta es la primera linea
+Esta es la segunda linea`);
+
+console.log(`El valor de mi variable es ${miTexto}`);
+
+##EJEMPLO 2 - TIPOS BASICOS NUMBER Y CREACION DE FUNCIONES
+
+let op1: number=10;
+let op2: number=15;
+
+
+console.log(`Mis variables iniciales son ${op1} y ${op2}`);
+
+op1++;
+op2+=4;
+
+console.log(`Mis variables finales son ${op1} y ${op2}`);
+
+let resultado:number=op1/op2;
+console.log(`Resultado: ${resultado}`);
+console.log(`Resultado: ${resultado.toPrecision(2)}`);
+
+
+let varDesconocido: any;
+console.log(`Variable tiene valor: ${varDesconocido} y es de tipo ${typeof(varDesconocido)}`);
+varDesconocido = "Ahora hay un texto";
+console.log(`Variable tiene valor: ${varDesconocido} y es de tipo ${typeof(varDesconocido)}`);
+varDesconocido = 2.8;
+console.log(`Variable tiene valor: ${varDesconocido} y es de tipo ${typeof(varDesconocido)}`);
+
+let varTipoIndefinido: undefined=undefined;
+
+let varVoid:void=undefined;
+console.log(`Variable tiene valor: ${varVoid} y es de tipo ${typeof(varVoid)}`);
+
+function imprimirMensaje():void{
+    console.log("Mensaje generico");
+}
+
+function imprimirMensaje2(msj:string):void{
+ console.log(msj);
+}
+
+imprimirMensaje();
+imprimirMensaje2("mensaje parametro");
+
+function sumar(op1:number, op2:number):number{
+return op1+op2;
+}
+
+var fSumar = sumar;
+
+console.log(sumar(10,15));
+console.log(fSumar(20,25));
