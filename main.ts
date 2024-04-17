@@ -2,9 +2,14 @@ import { NivelEducativo } from "./aprendiz.js";
 import { Aprendiz } from "./aprendiz.js";
 import { Curso } from "./curso.js";
 
-let cursos = [new Curso("practicas esenciales para el agilismo",20,90,true,2019)]
+let cursos = [new Curso("practicas esenciales para el agilismo",20,90,true,2019),
+new Curso("Ingenieria de software para la web",15,99,true,2018)    ,
+new Curso("pruebas automatizadas",25,50,false,2020)    ,
+new Curso("principios de diseño y arquitectura",30,75,true,2020)    
+]
 
-export const ap = new Aprendiz("Juan Pablo","Reyes Gomez","avatar.png",30,NivelEducativo.POSGRADO)
+export const ap = new Aprendiz("Juan Pablo","Reyes Gomez","avatar.png",30,NivelEducativo.POSGRADO, cursos)
+console.log(ap.cursos);
 
 let aprendizTable: HTMLElement = document.getElementById("aprendiz")!;
 
