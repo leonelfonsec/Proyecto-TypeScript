@@ -12,9 +12,10 @@ export const ap = new Aprendiz("Juan Pablo","Reyes Gomez","avatar.png",30,NivelE
 console.log(ap.cursos);
 
 let aprendizTable: HTMLElement = document.getElementById("aprendiz")!;
-
+let estadisticasTable: HTMLElement = document.getElementById("estadisticas")!;
 
 mostrarDatosAprendiz(ap);
+mostrarEstadisticas(ap);
 
 function mostrarDatosAprendiz(aprendiz: Aprendiz):void{
     let tbodyAprendiz=document.createElement("tbody");
@@ -26,4 +27,11 @@ function mostrarDatosAprendiz(aprendiz: Aprendiz):void{
     <tr><td>Edad:</td><td>${aprendiz.edad}</td></>
     `
     aprendizTable.appendChild(tbodyAprendiz);
+}
+
+function mostrarEstadisticas(aprendiz:Aprendiz):void{
+    let numeroCertificados:number = aprendiz.darCursosCertificados();
+    let trElement:HTMLElement = document.createElement("tr");
+    trElement.innerHTML=`<td><b>Cursos certifficados</b></td><td>${numeroCertificados}</td>`;
+    estadisticasTable.appendChild(trElement);
 }
