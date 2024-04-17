@@ -1,5 +1,8 @@
 import { NivelEducativo } from "./aprendiz.js";
 import { Aprendiz } from "./aprendiz.js";
+import { Curso } from "./curso.js";
+
+let cursos = [new Curso("practicas esenciales para el agilismo",20,90,true,2019)]
 
 export const ap = new Aprendiz("Juan Pablo","Reyes Gomez","avatar.png",30,NivelEducativo.POSGRADO)
 
